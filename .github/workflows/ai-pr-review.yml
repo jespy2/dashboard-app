@@ -5,6 +5,7 @@ on:
 permissions:
   contents: read
   pull-requests: write   # needed to post review comments
+  issues: write
 
 jobs:
   review:
