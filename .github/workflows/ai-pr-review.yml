@@ -1,0 +1,44 @@
+name: AI PR Review
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Model to use (gpt-4o-mini or gpt-4o)"
+        required: false
+        default: "gpt-4o-mini"
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    env:
+      # Default model (cheap)
+      OPENAI_MODEL: gpt-4o-mini
+      # Deep model (opt-in)
+      DEEP_MODEL: gpt-4o
+      # If this label is present on the PR, use DEEP_MODEL
+      DEEP_TRIGGER_LABEL: deep-review
+      # Safety guard: cap how much diff we send
+      MAX_PATCH_CHARS: "12000"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci
+
+      - name: AI review
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          # Allow manual override from "Run workflow"
+          WORKFLOW_INPUT_MODEL: ${{ github.event.inputs.model }}
+        run: node scripts/ai-review.mjs
+
