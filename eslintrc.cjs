@@ -80,7 +80,7 @@ module.exports = {
       { allowNullableBoolean: true, allowNullableString: false, allowAny: false },
     ],
     '@typescript-eslint/no-floating-promises': 'error',
-    
+
     // React rules
     'react/no-danger': 'error',
     'react/jsx-props-no-spreading': [
@@ -95,7 +95,7 @@ module.exports = {
     'react/no-array-index-key': 'warn',
     'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
     'react/react-in-jsx-scope': 'off', // React 17+
-    
+
     // Imports
     'import/order': [
       'error',
@@ -111,13 +111,16 @@ module.exports = {
       'error',
       { devDependencies: ['**/*.test.*', '**/*.spec.*', '**/vite.config.*', '**/jest.config.*'] },
     ],
-    
+
     // Arrow body style
     'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: false }],
 
     // Early returns instead of if/else
     'no-else-return': ['error', { allowElseIf: false }],
 
+    //single quotes
+    quotes: ['error', 'single', { avoidEscape: true }],
+    
     // No for loops (prefer map/reduce/etc.) or ForOfStatement
     'no-restricted-syntax': [
       'error',
