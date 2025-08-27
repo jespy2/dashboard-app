@@ -19,6 +19,8 @@ const eslintConfig = [
   {
     rules: {
       quotes: ['error', 'single', { avoidEscape: true }],
+      semi: ["error", "always"],
+      "comma-dangle": ["error", "always"],
       // Key rule for wrapping import members:
       'object-curly-newline': [
         'error',
