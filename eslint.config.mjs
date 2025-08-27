@@ -31,16 +31,6 @@ const eslintConfig = [
           },
         },
       ],
-      // JSX wrapping rules
-      "react/jsx-first-prop-new-line": ["error", "multiline"],
-
-      "react/jsx-max-props-per-line": [
-        "error",
-        {
-          maximum: 1, // force one prop per line if wrapped
-        },
-      ],
-
       "react/jsx-closing-bracket-location": ["error", "line-aligned"],
     },
   },
