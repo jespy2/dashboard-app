@@ -11,7 +11,7 @@ export const ThemeToggle = () => {
   return (
     <Tooltip label={dark ? 'Switch to light mode' : 'Switch to dark mode'} >
       <ActionIcon
-        aria-lable='Toggle color scheme'
+        aria-label='Toggle color scheme'
         onClick={toggle}
         variant='defualt'
         radius='xl'
