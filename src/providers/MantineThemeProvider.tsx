@@ -16,7 +16,7 @@ type ProvidersProps = { children: ReactNode };
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
-const MantineThemeProvider = ({ children }: ProvidersProps) => {
+export const MantineThemeProvider = ({ children }: ProvidersProps) => {
   const preferred = useColorScheme();
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: 'color-scheme',
