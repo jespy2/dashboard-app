@@ -2,8 +2,8 @@
 
 import { AppShell } from '@/components/shell/AppShell';
 import {
-  Card, KPI,
-} from '@/components/ui/Card';
+  CustomMCard, KPI,
+} from '@/components/ui/CustomMCard';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Grid } from '@mantine/core';
 
@@ -14,29 +14,29 @@ const Page = () => {
         <SectionTitle>Overview</SectionTitle>
         <Grid>
           <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card p="md">
+            <CustomMCard p="md">
               <KPI label="Regions Loaded" value="-" />
-            </Card>
+            </CustomMCard>
           </Grid.Col>
           <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card p="md">
+            <CustomMCard p="md">
               <KPI label="Commute Avg (min)" value="-" />
-            </Card>
+            </CustomMCard>
           </Grid.Col>
           <Grid.Col span={{ base: 12, md: 4 }}>
-            <Card p="md">
+            <CustomMCard p="md">
               <KPI label="Housing Burden %" value="-" />
-            </Card>
+            </CustomMCard>
           </Grid.Col>
         </Grid>
 
         <SectionTitle>Getting Started</SectionTitle>
-        <Card>
+        <CustomMCard>
           <p className="text-sm opacity-80">
             UI shell is ready. Theme toggle persists. Next: connect sample data
             and render first charts
           </p>
-        </Card>
+        </CustomMCard>
       </div>
     </AppShell>
   );

@@ -17,7 +17,7 @@ export const ThemeToggle = () => {
       <ActionIcon
         aria-label="Toggle color scheme"
         onClick={toggle}
-        variant="defualt"
+        variant="default"
         radius="xl"
         size="lg"
       >

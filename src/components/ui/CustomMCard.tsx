@@ -5,7 +5,7 @@ import {
   Card as MCard, Text, Title, type CardProps,
 } from '@mantine/core';
 
-export const Card = (props: CardProps) => {
+export const CustomMCard = (props: CardProps) => {
   return (
     <MCard
       radius="xl"
