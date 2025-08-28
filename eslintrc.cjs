@@ -11,7 +11,10 @@ module.exports = {
   settings: {
     react: { version: 'detect' },
     'import/resolver': {
-      typescript: { alwaysTryTypes: true },
+      typescript: {
+        alwaysTryTypes: true,
+        project: ['./tsconfig.json'],
+      },
       node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
     },
   },
@@ -72,12 +75,19 @@ module.exports = {
     // Strict type checking
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-unsafe-assignment': 'off', // enable if you want stricter
-    '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      { prefer: 'type-imports' },
+    ],
     '@typescript-eslint/no-unnecessary-type-assertion': 'error',
     '@typescript-eslint/no-misused-promises': 'error',
     '@typescript-eslint/strict-boolean-expressions': [
       'warn',
-      { allowNullableBoolean: true, allowNullableString: false, allowAny: false },
+      {
+        allowNullableBoolean: true,
+        allowNullableString: false,
+        allowAny: false,
+      },
     ],
     '@typescript-eslint/no-floating-promises': 'error',
 
@@ -100,8 +110,19 @@ module.exports = {
     'import/order': [
       'error',
       {
-        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
-        pathGroups: [{ pattern: 'react', group: 'external', position: 'before' }],
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type',
+        ],
+        pathGroups: [
+          { pattern: 'react', group: 'external', position: 'before' },
+        ],
         'newlines-between': 'always',
         alphabetize: { order: 'asc', caseInsensitive: true },
       },
@@ -109,27 +130,45 @@ module.exports = {
     'import/no-cycle': 'warn',
     'import/no-extraneous-dependencies': [
       'error',
-      { devDependencies: ['**/*.test.*', '**/*.spec.*', '**/vite.config.*', '**/jest.config.*'] },
+      {
+        devDependencies: [
+          '**/*.test.*',
+          '**/*.spec.*',
+          '**/vite.config.*',
+          '**/jest.config.*',
+        ],
+      },
     ],
 
     // Arrow body style
-    'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: false }],
+    'arrow-body-style': [
+      'error',
+      'as-needed',
+      { requireReturnForObjectLiteral: false },
+    ],
 
     // Early returns instead of if/else
     'no-else-return': ['error', { allowElseIf: false }],
 
     //single quotes
     quotes: ['error', 'single', { avoidEscape: true }],
-    
+
     // No for loops (prefer map/reduce/etc.) or ForOfStatement
     'no-restricted-syntax': [
       'error',
       {
         selector: 'ForStatement',
-        message: 'Prefer array methods (map/filter/reduce/forEach) over for-loops.',
+        message:
+          'Prefer array methods (map/filter/reduce/forEach) over for-loops.',
       },
-      { selector: 'ForInStatement', message: 'Prefer Object.entries/keys + array methods.' },
-      { selector: 'ForOfStatement', message: 'Prefer array methods when possible.' },
+      {
+        selector: 'ForInStatement',
+        message: 'Prefer Object.entries/keys + array methods.',
+      },
+      {
+        selector: 'ForOfStatement',
+        message: 'Prefer array methods when possible.',
+      },
     ],
 
     // No nested ternaries
@@ -164,5 +203,12 @@ module.exports = {
       },
     },
   ],
-  ignorePatterns: ['node_modules', 'dist', 'build', '.next', 'coverage', '*.d.ts'],
+  ignorePatterns: [
+    'node_modules',
+    'dist',
+    'build',
+    '.next',
+    'coverage',
+    '*.d.ts',
+  ],
 };

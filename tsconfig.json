@@ -44,7 +44,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "jest.config.cjs", "_mocks_/next/navigation.js"  ],
   "exclude": [
     "node_modules",
     "dist",

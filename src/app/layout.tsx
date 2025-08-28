@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ColorSchemeScript } from "@mantine/core";
 import '@mantine/core/styles.css';
 import "./globals.css";
-import { MantineThemeProvider } from "@/providers/MantineThemeProvider";
+import MantineThemeProvider from "@/providers";
 
 export const metadata: Metadata = {
   title: "Regional Equity & Commute Flow",
