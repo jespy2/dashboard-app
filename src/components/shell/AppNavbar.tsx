@@ -1,6 +1,8 @@
 'use client';
 
-import { NavLink, Stack } from '@mantine/core';
+import {
+  NavLink, Stack,
+} from '@mantine/core';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 

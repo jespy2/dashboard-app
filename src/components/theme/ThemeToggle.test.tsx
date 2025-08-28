@@ -1,11 +1,17 @@
 import { renderWithProviders } from '@/test/utils';
-import { screen, waitFor } from '@testing-library/react';
+import {
+  screen, waitFor,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ThemeToggle } from './ThemeToggle';
 
 jest.mock('next/navigation', () => ({
   usePathname: () => '/',
-  useRouter: () => ({ push: jest.fn(), replace: jest.fn(), prefetch: jest.fn() }),
+  useRouter: () => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+    prefetch: jest.fn(),
+  }),
 }));
 
 test('writes to localStorage only after toggle and syncs DOM attribute', async () => {
@@ -24,9 +30,7 @@ test('writes to localStorage only after toggle and syncs DOM attribute', async (
     const themeOptons = stored === 'light' || stored === 'dark';
     expect(themeOptons).toBe(true);
     expect(
-      document.documentElement.getAttribute('data-mantine-color-scheme')
+      document.documentElement.getAttribute('data-mantine-color-scheme'),
     ).toBe(stored);
   });
 });
-
-

@@ -1,12 +1,17 @@
-import React from 'react';
 import { renderWithProviders } from '@/test/utils';
-import { screen, waitFor } from '@testing-library/react';
+import {
+  screen, waitFor,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useTheme } from './MantineThemeProvider';
 
 jest.mock('next/navigation', () => ({
   usePathname: () => '/',
-  useRouter: () => ({ push: jest.fn(), replace: jest.fn(), prefetch: jest.fn() }),
+  useRouter: () => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+    prefetch: jest.fn(),
+  }),
 }));
 
 function Probe() {
@@ -32,7 +37,9 @@ describe('MantineThemeProvider', () => {
 
     await waitFor(() => {
       expect(localStorage.getItem('color-scheme')).toBe('dark');
-      expect(document.documentElement.getAttribute('data-mantine-color-scheme')).toBe('dark');
+      expect(
+        document.documentElement.getAttribute('data-mantine-color-scheme'),
+      ).toBe('dark');
     });
   });
 });

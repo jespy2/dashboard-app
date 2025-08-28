@@ -7,8 +7,8 @@ Object.defineProperty(window, 'matchMedia', {
     media: query,
     matches: false, // default to light
     onchange: null,
-    addListener: () => {},       // deprecated, typing requires
-    removeListener: () => {},    // deprecated, typing requires
+    addListener: () => {}, // deprecated, typing requires
+    removeListener: () => {}, // deprecated, typing requires
     addEventListener: () => {},
     removeEventListener: () => {},
     dispatchEvent: () => false,
@@ -20,9 +20,15 @@ const storage: Record<string, string> = {};
 Object.defineProperty(window, 'localStorage', {
   value: {
     getItem: (k: string) => (k in storage ? storage[k] : null),
-    setItem: (k: string, v: string) => { storage[k] = v; },
-    removeItem: (k: string) => { delete storage[k]; },
-    clear: () => { for (const k of Object.keys(storage)) delete storage[k]; },
+    setItem: (k: string, v: string) => {
+      storage[k] = v;
+    },
+    removeItem: (k: string) => {
+      delete storage[k];
+    },
+    clear: () => {
+      for (const k of Object.keys(storage)) delete storage[k];
+    },
   },
 });
 
@@ -39,7 +45,8 @@ if (!('ResizeObserver' in global)) {
 
 if (!('requestAnimationFrame' in global)) {
   // @ts-expect-error - assign to global
-  global.requestAnimationFrame = (cb: FrameRequestCallback) => setTimeout(() => cb(performance.now()), 16) as unknown as number;
+  global.requestAnimationFrame = (cb: FrameRequestCallback) =>
+    setTimeout(() => cb(performance.now()), 16) as unknown as number;
   // @ts-expect-error - assign to global
   global.cancelAnimationFrame = (id: number) => clearTimeout(id);
 }

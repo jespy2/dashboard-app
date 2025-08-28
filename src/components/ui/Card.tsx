@@ -1,10 +1,19 @@
 'use client';
 
 import { palette } from '@/lib/palette';
-import { Card as MCard, Text, Title, type CardProps } from '@mantine/core';
+import {
+  Card as MCard, Text, Title, type CardProps,
+} from '@mantine/core';
 
 export const Card = (props: CardProps) => {
-  return <MCard radius="xl" shadow="sm" style={{ backgroundColor: palette.cardBg }} {...props} />;
+  return (
+    <MCard
+      radius="xl"
+      shadow="sm"
+      style={{ backgroundColor: palette.cardBg }}
+      {...props}
+    />
+  );
 };
 
 export type KPIProps = {

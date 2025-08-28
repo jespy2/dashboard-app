@@ -1,11 +1,16 @@
-import React from 'react';
-import { renderWithProviders } from '@/test/utils';
 import { AppShell } from '@/components/shell/AppShell';
-import { screen, within } from '@testing-library/react';
+import { renderWithProviders } from '@/test/utils';
+import {
+  screen, within,
+} from '@testing-library/react';
 
 jest.mock('next/navigation', () => ({
   usePathname: () => '/',
-  useRouter: () => ({ push: jest.fn(), replace: jest.fn(), prefetch: jest.fn() }),
+  useRouter: () => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+    prefetch: jest.fn(),
+  }),
 }));
 
 describe('AppShell', () => {
@@ -13,11 +18,13 @@ describe('AppShell', () => {
     renderWithProviders(
       <AppShell>
         <div data-testid="content">Hello</div>
-      </AppShell>
+      </AppShell>,
     );
 
     // Header (brand text from AppHeader)
-    expect(screen.getByText(/Regional Equity & Commute Flow/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Regional Equity & Commute Flow/i),
+    ).toBeInTheDocument();
 
     // Navbar role (Mantine renders <nav> inside AppNavbar)
     const nav = screen.getByRole('navigation');
@@ -31,7 +38,7 @@ describe('AppShell', () => {
     renderWithProviders(
       <AppShell>
         <div>Page</div>
-      </AppShell>
+      </AppShell>,
     );
 
     // Example assertion if your NavLink sets aria-current="page"

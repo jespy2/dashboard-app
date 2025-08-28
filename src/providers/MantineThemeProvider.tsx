@@ -1,15 +1,23 @@
 'use client';
 
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import { palette } from '@/lib/palette';
+import { ten } from '@/lib/tuple';
 import {
   createTheme,
   MantineProvider,
   type CSSVariablesResolver,
   type MantineColorsTuple,
 } from '@mantine/core';
-import { ThemeContextType, ColorScheme } from './provider.types';
-import { palette } from '@/lib/palette';
-import { ten } from '@/lib/tuple';
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import {
+  ColorScheme, ThemeContextType,
+} from './provider.types';
 
 type ProvidersProps = { children: ReactNode };
 
@@ -26,9 +34,10 @@ export const MantineThemeProvider = ({ children }: ProvidersProps) => {
   const [colorScheme, setColorScheme] = useState<ColorScheme | null>(null);
 
   useEffect(() => {
-    const stored = (typeof window !== 'undefined'
-      ? (localStorage.getItem('color-scheme') as ColorScheme | null)
-      : null);
+    const stored =
+      typeof window !== 'undefined'
+        ? (localStorage.getItem('color-scheme') as ColorScheme | null)
+        : null;
 
     const prefersDark =
       typeof window !== 'undefined' &&
@@ -74,7 +83,8 @@ export const MantineThemeProvider = ({ children }: ProvidersProps) => {
     if (typeof window !== 'undefined') localStorage.setItem('color-scheme', c);
   };
 
-  const toggle = () => set((colorScheme ?? 'light') === 'dark' ? 'light' : 'dark');
+  const toggle = () =>
+    set((colorScheme ?? 'light') === 'dark' ? 'light' : 'dark');
 
   // Build props so we only include forceColorScheme when defined (fixes TS error)
   const providerProps = {
@@ -85,7 +95,9 @@ export const MantineThemeProvider = ({ children }: ProvidersProps) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ colorScheme: (colorScheme ?? 'light'), set, toggle }}>
+    <ThemeContext.Provider
+      value={{ colorScheme: colorScheme ?? 'light', set, toggle }}
+    >
       <MantineProvider {...providerProps}>{children}</MantineProvider>
     </ThemeContext.Provider>
   );
@@ -93,6 +105,7 @@ export const MantineThemeProvider = ({ children }: ProvidersProps) => {
 
 export const useTheme = (): ThemeContextType => {
   const themeContext = useContext(ThemeContext);
-  if (!themeContext) throw new Error('useTheme must be used within the MantineThemeProvider');
+  if (!themeContext)
+    throw new Error('useTheme must be used within the MantineThemeProvider');
   return themeContext;
 };

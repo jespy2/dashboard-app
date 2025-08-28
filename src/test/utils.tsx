@@ -1,7 +1,9 @@
 // src/test/utils.tsx
 import { AppShell } from '@/components/shell/AppShell';
 import Providers from '@/providers';
-import { render, type RenderOptions } from '@testing-library/react';
+import {
+  render, type RenderOptions,
+} from '@testing-library/react';
 import React from 'react';
 
 type WrapperProps = { children: React.ReactNode };

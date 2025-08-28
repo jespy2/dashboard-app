@@ -1,6 +1,8 @@
 'use client';
 
-import { AppShell as MantineAppShell, ScrollArea } from '@mantine/core';
+import {
+  AppShell as MantineAppShell, ScrollArea,
+} from '@mantine/core';
 import { AppHeader } from './AppHeader';
 import { AppNavbar } from './AppNavbar';
 
@@ -19,8 +21,8 @@ export const AppShell = ({ children }: AppShellProps) => {
         <AppHeader />
       </MantineAppShell.Header>
 
-      <MantineAppShell.Navbar p='xs' >
-        <ScrollArea style={{ height: '100%'}} >
+      <MantineAppShell.Navbar p="xs">
+        <ScrollArea style={{ height: '100%' }}>
           <AppNavbar />
         </ScrollArea>
       </MantineAppShell.Navbar>
