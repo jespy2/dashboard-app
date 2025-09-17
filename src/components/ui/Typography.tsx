@@ -22,7 +22,7 @@ export const SectionSubTitle = ({ children }: TextProps) => {
 };
 
 export const TimelineCardTitle = ({ children }: TextProps) => {
-  return <Title order={5}>{children}</Title>;
+  return <Title order={4}>{children}</Title>;
 };
 
 export const SectionText = ({ children }: TextProps) => {

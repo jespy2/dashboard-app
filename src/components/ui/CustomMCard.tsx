@@ -8,8 +8,8 @@ import {
 export const CustomMCard = (props: CardProps) => {
   return (
     <MCard
-      radius="sm"
-      shadow="sm"
+      rounded-md
+      shadow-sm
       style={{ backgroundColor: palette.cardBg }}
       {...props}
     />
