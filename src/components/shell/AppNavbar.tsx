@@ -7,9 +7,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const links = [
-  { href: '/', label: 'Dashboard' },
-  { href: '/datasets', label: 'Datasets' },
-  { href: '/health', label: 'System Health' },
+  { href: '/', label: 'Data Visualization' },
+  { href: '/sources', label: 'Sources' },
 ] as const;
 
 export const AppNavbar = () => {

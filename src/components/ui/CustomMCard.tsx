@@ -8,7 +8,7 @@ import {
 export const CustomMCard = (props: CardProps) => {
   return (
     <MCard
-      radius="xl"
+      radius="sm"
       shadow="sm"
       style={{ backgroundColor: palette.cardBg }}
       {...props}
@@ -16,12 +16,12 @@ export const CustomMCard = (props: CardProps) => {
   );
 };
 
-export type KPIProps = {
+export type MCardContentProps = {
   label: string;
   value: number | string;
 };
 
-export const KPI = ({ label, value }: KPIProps) => {
+export const MCardContent = ({ label, value }: MCardContentProps) => {
   return (
     <div>
       <Text c={palette.textSecondary} size="sm">

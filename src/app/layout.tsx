@@ -5,8 +5,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Regional Equity & Commute Flow',
-  description: 'Dashboard for commute, income and equity indicators',
+  title: 'Analysis of Gun Violence in the US',
+  description: 'Dashboard for visualizing gun violence data',
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {

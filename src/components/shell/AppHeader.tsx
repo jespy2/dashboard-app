@@ -9,7 +9,7 @@ export const AppHeader = () => {
   return (
     <Group px="md" h={56} justify="space-between">
       <Text fw={600} size="sm">
-        Regional Equity & Commute Flow
+        Gun Violence Data
       </Text>
       <ThemeToggle />
     </Group>

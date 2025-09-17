@@ -1,8 +1,8 @@
 'use client';
 
 import { AppShell } from '@/components/shell/AppShell';
-import { SectionTitle } from '@/components/ui/SectionTitle';
 import { ChartSkeleton, KPISkeleton } from '@/components/ui/Skeletons';
+import { SectionTitle } from '@/components/ui/Typography';
 
 const Loading = () => {
   return (
