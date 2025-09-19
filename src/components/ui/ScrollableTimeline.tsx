@@ -1,6 +1,7 @@
 import { palette } from '@/lib/palette';
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
+import { Timeline } from '../charts/Timeline';
 import {
   SectionText,
   TimelineCardTitle,
@@ -82,10 +83,15 @@ export const ScrollableTimeline: React.FC<ScrollableTimelineProps> = ({ items })
   return (
     <div
       className="relative flex flex-col items-center overflow-y-scroll px-10"
+        style={{
+          backgroundColor: palette.cardBg,
+        }}
     >
       {items.map((item, index) => (
         <ScrollableTimelineItem key={index} item={item} index={index} />
       ))}
+
+      <Timeline />
     </div>
   );
 };

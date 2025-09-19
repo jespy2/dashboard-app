@@ -1,6 +1,6 @@
 'use client';
 
-// import { Timeline } from '@/components/charts/Timeline';
+import { Timeline } from '@/components/charts/Timeline';
 import { AppShell } from '@/components/shell/AppShell';
 import { CustomMCard } from '@/components/ui/CustomMCard';
 import { ScrollableTimeline } from '@/components/ui/ScrollableTimeline';
@@ -97,14 +97,17 @@ const Index = () => {
     <AppShell>
       <div style={{ display: 'grid', gap: 16 }}>
         <PageTitle>Gun Violence in the USA</PageTitle>
-        <SectionText>Gun Violence in the USA</SectionText>
+        <SectionText>This is an effort to visualize data related to gun violence in the United States.  There is a great deal of debate around an issue that we seem to be getting no closer to resolving.  Part of the challenge to finding data-driven solutions is, well, the data.</SectionText>
+        <SectionText>Data has is difficult to find and inconsistently collected.  For this page, I have engaged the best data source I could find and done my best to present it as clearly as possible.  I am an software engineer, not a data scientist, but have done my best to keep the data interesting, informative and with as little massaging as possible.</SectionText>
         <Grid>
           <Grid.Col span={12}>
-            <CustomMCard h='15%' p="lg">
-              <SectionTitle>BattleField Medical Innovations</SectionTitle>
-              <SectionText>This text will describe what the significance is</SectionText>
+            <CustomMCard style={{ height: '70vh'}} p="lg">
+              <SectionTitle >BattleField Medical Innovations</SectionTitle>
+              <SectionText>The US military has been engaged in battlefields around the world since WWII.  In-theater medics have had to improvise and innovate in realtime to improve survival rates for traumatic injuries. </SectionText>
+              <SectionText>Battlefield medicine gets refined quickly because of the aggregation of common injuries.  IEDs led to innovations head trauma, for example.  Over time, these medical strategies come back to the US for use in civilian hospitals.  Emergency treatment of a gunshot wound (GSW) is no exception.</SectionText>
+              <SectionText>Core to the gun debate is the proliferation and easy access to guns in the US.  One side says that the way to stop gun violence is to arm more people.  The other says that increasing access to guns is a straight path to more gun violenc.</SectionText>
+              <SectionText>One theory is that this debate is obscured by improvements in trauma medicine for GSWs.  Gun access and proliferation and access exploded at a time that conincided with the Iraq/Afganistan Wars.  The theory suggests that more people were being shot during this time, but that gun deaths were going down because of improved survival rates.  This section is an effort to explore the relationship between the timing of medical innovations that impact mortality rates, and the actual mortality rates here in the US</SectionText>
               <ScrollableTimeline items={timelineData} />
-              {/* <Timeline /> */}
             </CustomMCard>
           </Grid.Col>
         </Grid>

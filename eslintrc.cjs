@@ -47,7 +47,8 @@ module.exports = {
     'next/core-web-vitals',
 
     // Prettier last to disable conflicting stylistic rules
-    'plugin:prettier/recommended',
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
   ],
   plugins: [
     '@typescript-eslint',
@@ -56,6 +57,7 @@ module.exports = {
     'jsx-a11y',
     'import',
     'unused-imports',
+    'prettier',
     'promise',
     'security',
     'sonarjs',
@@ -186,6 +188,8 @@ module.exports = {
 
     // SonarJS helps nudge early-return patterns by lowering complexity
     'sonarjs/cognitive-complexity': ['warn', 15],
+
+    "prettier/prettier": ["error", { "tabWidth": 2, "useTabs": false }]
   },
   overrides: [
     {

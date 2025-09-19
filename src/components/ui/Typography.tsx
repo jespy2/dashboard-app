@@ -14,7 +14,7 @@ export const PageTitle = ({ children }: TextProps) => {
 };
 
 export const SectionTitle = ({ children }: TextProps) => {
-  return <Title order={2}>{children}</Title>;
+  return <Title order={2} mb='5' >{children}</Title>;
 };
 
 export const SectionSubTitle = ({ children }: TextProps) => {
@@ -26,7 +26,7 @@ export const TimelineCardTitle = ({ children }: TextProps) => {
 };
 
 export const SectionText = ({ children }: TextProps) => {
-  return <Text size='md'>{children}</Text>;
+  return <Text size='md' mb='15'>{children}</Text>;
 };
 
 export const SourceLinkText = ({ children }: TextProps) => {

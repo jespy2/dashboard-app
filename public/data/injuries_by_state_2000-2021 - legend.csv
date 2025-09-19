@@ -1,0 +1,10 @@
+Variable,Description
+pop_all,"Estimated state-year population based on population information obtained from CDC WONDER, adjusted for a series break in the 2021 population data (see Appendix A for discussion). This adjustment is the reason why population ""counts"" are not all integer values."
+pred_type,Indicates whether the values provided are imputed (for states missing actual hospital discharge data) or completeness-corrected (for states with actual data but possibly missing some injury codes)
+m_pred_nf10k,"Posterior mean predicted rate of non-fatal firearm hospitalizations per 10,000 population"
+sd_pred_nf10k,"Posterior standard deviation of predicted rate of non-fatal firearm hospitalizations per 10,000"
+pX_pred_nf10k,"Quantiles of posterior distribution of non-fatal firearm hospitalizations per 10,000 for Xth percentile inclueds (2.5th, 5th, 10th, 90th, 95th, and 97.5th)"
+m_pred_total10k,"Posterior mean predicted rate of total firearm deaths and non-fatal injuries per 10,000 population (observed firearm death rate + m_pred_nf10k)"
+pX_pred_total10k,"Quantiles of posterior distribution of non-fatal firearm hospitalizations per 10,000"
+pred_count_nf_Y,Draw from posterior distribution for predicted number of non-fatal firearm hospitalizations. Y indicates the number of the draw (1 to 100)
+pred_count_total_Y,Draw from posterior distribution for predicted number of total firearm deaths and non-fatal injuries (pred_count_nf + observed number of firearm deaths). Y indicates the number of the draw (1 to 100)
