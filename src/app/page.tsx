@@ -7,6 +7,7 @@ import { ScrollableTimeline } from '@/components/ui/ScrollableTimeline';
 import {
   PageTitle, SectionText, SectionTitle,
 } from '@/components/ui/Typography';
+import { loadDeathsByState } from '@/lib/contracts/sources';
 import { Grid } from '@mantine/core';
 
 const timelineData = [
@@ -93,6 +94,7 @@ const timelineData = [
 ];
 
 const Index = () => {
+  const deathsByState = loadDeathsByState();
   return (
     <AppShell>
       <div style={{ display: 'grid', gap: 16 }}>
