@@ -57,6 +57,9 @@ export default [
 
       // TS handles undefined symbols in type-aware mode
       'no-undef': 'off',
+
+      // warn against console.logs
+      'no-console': ['error', { allow: ['warn', 'error'] }],
     },
   },
 ];
