@@ -7,7 +7,7 @@ import {
 
 export const AppHeader = () => {
   return (
-    <Group px="md" h={56} justify="space-between">
+    <Group px="md" h={56} justify="space-between" style={{ zIndex: 10}}>
       <Text fw={600} size="sm">
         Gun Violence Data
       </Text>

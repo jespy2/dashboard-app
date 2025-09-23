@@ -104,6 +104,6 @@ export const loadInjuriesByState = async (): Promise<
 
     return acc;
   }, [] as InjuriesByStateRecord[]);
-
+  console.log('injuriesByState: ', injuriesByState);
   return injuriesByState;
 };

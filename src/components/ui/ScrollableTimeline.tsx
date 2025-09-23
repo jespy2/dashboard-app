@@ -18,15 +18,18 @@ type ScrollableScrollableTimelineItem = {
 
 type ScrollableTimelineProps = {
   items: ScrollableScrollableTimelineItem[];
-  height?: string; // e.g. "500px" or "100%"
+  height?: string;
 };
 
-const ScrollableTimelineItem: React.FC<{ item: ScrollableScrollableTimelineItem; index: number }> = ({
+const ScrollableTimelineItem: React.FC<{
+  item: ScrollableScrollableTimelineItem;
+  index: number;
+}> = ({
   item,
   index,
 }) => {
   const { ref, entry } = useInView({
-    threshold: Array.from({ length: 11 }, (_, i) => i / 10), // [0, 0.1, ..., 1]
+    threshold: Array.from({ length: 11 }, (_, i) => i / 10),
   });
 
   const ratio = entry?.intersectionRatio ?? 0;
@@ -42,7 +45,6 @@ const ScrollableTimelineItem: React.FC<{ item: ScrollableScrollableTimelineItem;
       <div
         className='h-full my-10 absolute left-1/2 top-0 bottom-0 w-1 -translate-x-1/2 z-5'
         style={{
-          // height: lineHeight,
           backgroundColor: palette.accent2,
         }}
       />
@@ -82,7 +84,7 @@ const ScrollableTimelineItem: React.FC<{ item: ScrollableScrollableTimelineItem;
 export const ScrollableTimeline: React.FC<ScrollableTimelineProps> = ({ items }) => {
   return (
     <div
-      className="relative flex flex-col items-center overflow-y-scroll px-10"
+      className="relative flex flex-col items-center px-10"
         style={{
           backgroundColor: palette.cardBg,
         }}
@@ -90,8 +92,6 @@ export const ScrollableTimeline: React.FC<ScrollableTimelineProps> = ({ items })
       {items.map((item, index) => (
         <ScrollableTimelineItem key={index} item={item} index={index} />
       ))}
-
-      <Timeline />
     </div>
   );
 };

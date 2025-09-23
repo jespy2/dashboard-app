@@ -12,7 +12,10 @@ import {
   loadDeathsByState,
   loadInjuriesByState,
 } from '@/lib/contracts/sources';
-import { Grid } from '@mantine/core';
+import { palette } from '@/lib/palette';
+import { faDownLong } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Flex, Timeline } from '@mantine/core';
 
 const timelineData = [
   {
@@ -135,57 +138,68 @@ const Index = () => {
     <AppShell>
       <div style={{ display: 'grid', gap: 16 }}>
         <PageTitle>Gun Violence in the USA</PageTitle>
-        <SectionText>
-          This is an effort to visualize data related to gun violence in the
-          United States. There is a great deal of debate around an issue that we
-          seem to be getting no closer to resolving. Part of the challenge to
-          finding data-driven solutions is, well, the data.
-        </SectionText>
-        <SectionText>
-          Data has is difficult to find and inconsistently collected. For this
-          page, I have engaged the best data source I could find and done my
-          best to present it as clearly as possible. I am an software engineer,
-          not a data scientist, but have done my best to keep the data
-          interesting, informative and with as little massaging as possible.
-        </SectionText>
-        <Grid>
-          <Grid.Col span={12}>
-            <CustomMCard style={{ height: '70vh' }} p="lg">
-              <SectionTitle>BattleField Medical Innovations</SectionTitle>
-              <SectionText>
-                The US military has been engaged in battlefields around the
-                world since WWII. In-theater medics have had to improvise and
-                innovate in realtime to improve survival rates for traumatic
-                injuries.{' '}
-              </SectionText>
-              <SectionText>
-                Battlefield medicine gets refined quickly because of the
-                aggregation of common injuries. IEDs led to innovations head
-                trauma, for example. Over time, these medical strategies come
-                back to the US for use in civilian hospitals. Emergency
-                treatment of a gunshot wound (GSW) is no exception.
-              </SectionText>
-              <SectionText>
-                Core to the gun debate is the proliferation and easy access to
-                guns in the US. One side says that the way to stop gun violence
-                is to arm more people. The other says that increasing access to
-                guns is a straight path to more gun violenc.
-              </SectionText>
-              <SectionText>
-                One theory is that this debate is obscured by improvements in
-                trauma medicine for GSWs. Gun access and proliferation and
-                access exploded at a time that conincided with the
-                Iraq/Afganistan Wars. The theory suggests that more people were
-                being shot during this time, but that gun deaths were going down
-                because of improved survival rates. This section is an effort to
-                explore the relationship between the timing of medical
-                innovations that impact mortality rates, and the actual
-                mortality rates here in the US
-              </SectionText>
-              <ScrollableTimeline items={timelineData} />
-            </CustomMCard>
-          </Grid.Col>
-        </Grid>
+        <Flex
+          justify="flex-start"
+          align="flex-start"
+          direction="column"
+          className="h-screen"
+          style={{ backgroundColor: palette.cardBg }}
+        >
+          <div className="pb-96">
+            <SectionText>
+              This is an effort to visualize data related to gun violence in the
+              United States. There is a great deal of debate around an issue
+              that we seem to be getting no closer to resolving. Part of the
+              challenge to finding data-driven solutions is, well, the data.
+            </SectionText>
+            <SectionText>
+              Data has is difficult to find and inconsistently collected. For
+              this page, I have engaged the best data source I could find and
+              done my best to present it as clearly as possible. I am an
+              software engineer, not a data scientist, but have done my best to
+              keep the data interesting, informative and with as little
+              massaging as possible.
+            </SectionText>
+          </div>
+          <SectionText>
+            Scroll to continue
+            <FontAwesomeIcon icon={faDownLong} />
+          </SectionText>
+        </Flex>
+        <CustomMCard p="lg">
+          <SectionTitle>BattleField Medical Innovations</SectionTitle>
+          <hr className="w-3/4 pb-3.5" />
+          <SectionText>
+            The US military has been engaged in battlefields around the world
+            since WWII. In-theater medics have had to improvise and innovate in
+            realtime to improve survival rates for traumatic injuries.{' '}
+          </SectionText>
+          <SectionText>
+            Battlefield medicine gets refined quickly because of the aggregation
+            of common injuries. IEDs led to innovations head trauma, for
+            example. Over time, these medical strategies come back to the US for
+            use in civilian hospitals. Emergency treatment of a gunshot wound
+            (GSW) is no exception.
+          </SectionText>
+          <SectionText>
+            Core to the gun debate is the proliferation and easy access to guns
+            in the US. One side says that the way to stop gun violence is to arm
+            more people. The other says that increasing access to guns is a
+            straight path to more gun violence.
+          </SectionText>
+          <SectionText>
+            One theory is that this debate is obscured by improvements in trauma
+            medicine for GSWs. Gun access and proliferation and access exploded
+            at a time that conincided with the Iraq/Afganistan Wars. The theory
+            suggests that more people were being shot during this time, but that
+            gun deaths were going down because of improved survival rates. This
+            section is an effort to explore the relationship between the timing
+            of medical innovations that impact mortality rates, and the actual
+            mortality rates here in the US
+          </SectionText>
+          <ScrollableTimeline items={timelineData} />
+        </CustomMCard>
+        <Timeline />
       </div>
     </AppShell>
   );
