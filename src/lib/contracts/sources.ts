@@ -1,4 +1,8 @@
-import { DeathsByStateRecord } from './contracts';
+import {
+  DeathsByStateRecord,
+  InjuriesByStateMap,
+  InjuriesByStateRecord,
+} from './contracts';
 
 export const loadDeathsByState = async (): Promise<DeathsByStateRecord[]> => {
   const response = await fetch('/data/deaths_by_state_1999-2023.csv');
@@ -8,13 +12,9 @@ export const loadDeathsByState = async (): Promise<DeathsByStateRecord[]> => {
       `Failed to fetch deaths_by_state_1999-2023.csv: ${response.statusText}`,
     );
   }
+
   const csvText = await response.text();
-  if (!response.ok) {
-    throw new Error(
-      `Failed to fetch deaths_by_state_1999-2023.csv: ${response.statusText}`,
-    );
-  }
-  
+
   const rows = csvText.trim().split('\n');
 
   // find the header line and the last row (Hawaii)
@@ -32,7 +32,7 @@ export const loadDeathsByState = async (): Promise<DeathsByStateRecord[]> => {
       index === 0 ? 'state' : (header.match(/\d{4}/)?.[0] ?? header),
     ); // update key from 'Location' to 'state'
 
-  const deathsByStatejson = cleanRows.slice(1).map((row) => {
+  const deathsByState = cleanRows.slice(1).map((row) => {
     const values = row.split(',');
 
     const deathsByStateObj = Object.fromEntries(
@@ -55,5 +55,55 @@ export const loadDeathsByState = async (): Promise<DeathsByStateRecord[]> => {
     return deathsByStateObj;
   });
 
-  return deathsByStatejson;
+  return deathsByState;
+};
+
+export const loadInjuriesByState = async (): Promise<
+  InjuriesByStateRecord[]
+> => {
+  const response = await fetch('data/injuries_by_state_2000-2021.csv');
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch injuries_by_state_2000-2021.csv: ${response.statusText}`,
+    );
+  }
+
+  const csvText = await response.text();
+
+  const rows = csvText.trim().split('\n');
+  const headers = rows[0]?.split(',');
+
+  // find columns we want
+  const stateIdx = headers?.indexOf('state') ?? -1;
+  const yearIdx = headers?.indexOf('year') ?? -1;
+  const valueIdx = headers?.indexOf('m_pred_nf10k') ?? -1;
+
+  // null/invalid check
+  if (stateIdx === -1 || yearIdx === -1 || valueIdx === -1) {
+    throw new Error(
+      'CSV headers are missing one of: state, year, m_pred_nf10k',
+    );
+  }
+  // Reduce rows into grouped objects
+  const injuriesByState = rows.slice(1).reduce((acc, row) => {
+    const columns = row.split(',');
+
+    const state = columns[stateIdx];
+    const year = Number(columns[yearIdx]);
+    const value = parseFloat(columns[valueIdx] ?? '');
+
+    if (!state || Number.isNaN(year) || Number.isNaN(value)) return acc;
+
+    let record = acc.find((r) => r.state === state);
+    if (!record) {
+      record = { state } as InjuriesByStateRecord;
+      acc.push(record);
+    }
+
+    record[year] = value;
+
+    return acc;
+  }, [] as InjuriesByStateRecord[]);
+
+  return injuriesByState;
 };
